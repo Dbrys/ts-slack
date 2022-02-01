@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { AccessTimeOutlined } from '@material-ui/icons';
+import {
+  AccessTimeOutlined,
+  HelpOutline,
+  SearchRounded,
+} from '@material-ui/icons';
 import { Avatar } from '@material-ui/core';
 
 function Header() {
@@ -10,6 +14,13 @@ function Header() {
         <HeaderAvatar />
         <AccessTimeOutlined />
       </HeaderLeft>
+      <HeaderSearch>
+        <SearchRounded />
+        <input placeholder="Search..." />
+      </HeaderSearch>
+      <HeaderRight>
+        <HelpOutline />
+      </HeaderRight>
     </HeaderContainer>
   );
 }
@@ -44,7 +55,31 @@ const HeaderAvatar = styled(Avatar)`
     opacity: 0.5;
   }
 `;
-const HeaderSearch = styled.div``;
-const HeaderRight = styled.div``;
+const HeaderSearch = styled.div`
+  opacity: 1;
+  background-color: #0c4e8f;
+  border-radius: 6px;
+  text-align: center;
+  flex: 0.4;
+  display: flex;
+  padding: 0 20px;
+  > input {
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    min-width: 30vw;
+    outline: none;
+    color: white;
+  }
+`;
+const HeaderRight = styled.div`
+  flex: 0.3;
+  margin-right: 20px;
+  text-align: right;
+
+  > .MuiSvgIcon-root {
+    padding-left: 10px;
+  }
+`;
 
 export default Header;
