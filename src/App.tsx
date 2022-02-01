@@ -8,9 +8,16 @@ function App() {
     <Router>
       <>
         <Header />
-        <SideBar />
-        <AppBody />
-        <Routes>{/* <Route path="/" ></Route> */}</Routes>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <AppBody>
+                <SideBar />
+              </AppBody>
+            }
+          ></Route>
+        </Routes>
       </>
     </Router>
   );
