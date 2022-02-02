@@ -11,7 +11,7 @@ function Header() {
   return (
     <HeaderContainer>
       <HeaderLeft>
-        <HeaderAvatar />
+        <HeaderAvatar>D</HeaderAvatar>
         <AccessTimeOutlined />
       </HeaderLeft>
       <HeaderSearch>
@@ -50,7 +50,6 @@ const HeaderLeft = styled.div`
 
 const HeaderAvatar = styled(Avatar)`
   cursor: pointer;
-
   :hover {
     opacity: 0.5;
   }
