@@ -1,4 +1,4 @@
-### Slack clone build using Typescript, Redux, and styled components
+### Slack clone using Typescript, Redux, and styled components
 
 ### `npm test`
 

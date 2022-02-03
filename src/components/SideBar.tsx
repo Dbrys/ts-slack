@@ -1,5 +1,4 @@
-import { Avatar } from '@material-ui/core';
-import { EditRounded, FiberManualRecord } from '@material-ui/icons';
+import { FiberManualRecord, CreateRounded } from '@material-ui/icons';
 import React from 'react';
 import styled from 'styled-components';
 import Channels from './Channels';
@@ -17,9 +16,7 @@ function SideBar() {
           </UserIndicator>
         </LeftSideBarHeader>
         <RightSideBarHeader>
-          <Avatar>
-            <EditRounded />
-          </Avatar>
+          <CreateRounded />
         </RightSideBarHeader>
       </SideBarHeader>
       <MenuItems />
@@ -28,17 +25,16 @@ function SideBar() {
   );
 }
 const SideBarContainer = styled.div`
-  display: flex;
+  flex: 0.2;
+  margin-top: 60px;
   flex-direction: column;
-  position: fixed;
-  height: 100%;
-  width: 20%;
   color: white;
   background-color: var(--primary-color);
 `;
 
 const SideBarHeader = styled.div`
   display: flex;
+
   border-top: solid 1px gray;
   border-bottom: solid 1px gray;
   width: 100%;
@@ -49,19 +45,34 @@ const SideBarHeader = styled.div`
 
 const LeftSideBarHeader = styled.div`
   margin: 10px;
+
+  > h2 {
+    font-size: 15px;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
 `;
 
 const UserIndicator = styled.div`
   display: flex;
+  align-items: center;
+  > h3 {
+    font-size: 13px;
+    font-weight: 400;
+  }
 `;
 
 const RightSideBarHeader = styled.div`
   margin: 10px;
-  > .MuiAvatar-root {
+
+  > .MuiSvgIcon-root {
+    padding: 4px;
     background-color: white;
     color: black;
+    border-radius: 99px;
     :hover {
       opacity: 0.5;
+      cursor: pointer;
     }
   }
 `;

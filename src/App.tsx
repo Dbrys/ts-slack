@@ -1,26 +1,28 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Header, AppBody, SideBar } from './components';
+import { Header, SideBar } from './components';
+import styled from 'styled-components';
 
 function App() {
   return (
     <Router>
       <>
         <Header />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <AppBody>
-                <SideBar />
-              </AppBody>
-            }
-          ></Route>
-        </Routes>
+        <AppBody>
+          <SideBar />
+          <Routes>
+            <Route path="/"></Route>
+          </Routes>
+        </AppBody>
       </>
     </Router>
   );
 }
+
+const AppBody = styled.div`
+  display: flex;
+  height: 100vh;
+`;
 
 export default App;
