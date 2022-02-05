@@ -1,8 +1,12 @@
-import { FiberManualRecord, CreateRounded } from '@material-ui/icons';
+import {
+  FiberManualRecord,
+  CreateRounded,
+  DraftsRounded,
+} from '@material-ui/icons';
 import React from 'react';
 import styled from 'styled-components';
 import Channels from './Channels';
-import MenuItems from './MenuItems';
+import SideBarOption from './SideBarOption';
 
 function SideBar() {
   return (
@@ -10,16 +14,16 @@ function SideBar() {
       <SideBarHeader>
         <LeftSideBarHeader>
           <h2>TS-Slack</h2>
-          <UserIndicator>
+          <h3>
             <FiberManualRecord />
-            <h3>Dbrys</h3>
-          </UserIndicator>
+            Dbrys
+          </h3>
         </LeftSideBarHeader>
         <RightSideBarHeader>
           <CreateRounded />
         </RightSideBarHeader>
       </SideBarHeader>
-      <MenuItems />
+      <SideBarOption Icon={DraftsRounded} titleText="Messages" />
       <Channels />
     </SideBarContainer>
   );
@@ -34,31 +38,31 @@ const SideBarContainer = styled.div`
 
 const SideBarHeader = styled.div`
   display: flex;
-
   border-top: solid 1px gray;
   border-bottom: solid 1px gray;
   width: 100%;
   height: 10%;
-  align-content: center;
   justify-content: space-between;
 `;
 
 const LeftSideBarHeader = styled.div`
   margin: 10px;
-
   > h2 {
     font-size: 15px;
     font-weight: 900;
-    margin-bottom: 10px;
   }
-`;
-
-const UserIndicator = styled.div`
-  display: flex;
-  align-items: center;
   > h3 {
     font-size: 13px;
     font-weight: 400;
+    display: flex;
+    align-items: center;
+  }
+
+  > h3 > .MuiSvgIcon-root {
+    font-size: 14px;
+    margin-top: 1px;
+    margin-right: 2px;
+    color: green;
   }
 `;
 
@@ -67,6 +71,7 @@ const RightSideBarHeader = styled.div`
 
   > .MuiSvgIcon-root {
     padding: 4px;
+    font-size: 18px;
     background-color: white;
     color: black;
     border-radius: 99px;
