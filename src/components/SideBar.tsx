@@ -2,10 +2,9 @@ import {
   FiberManualRecord,
   CreateRounded,
   DraftsRounded,
+  Add,
 } from '@material-ui/icons';
-import React from 'react';
 import styled from 'styled-components';
-import Channels from './Channels';
 import SideBarOption from './SideBarOption';
 
 function SideBar() {
@@ -23,8 +22,13 @@ function SideBar() {
           <CreateRounded />
         </RightSideBarHeader>
       </SideBarHeader>
-      <SideBarOption Icon={DraftsRounded} titleText="Messages" />
-      <Channels />
+      <hr />
+      <SideBarOption Icon={DraftsRounded} titleText="Thread" />
+      <SideBarOption Icon={DraftsRounded} titleText="Testing" />
+      <hr />
+      <SideBarOption Icon={DraftsRounded} titleText="Channels" />
+      <hr />
+      <SideBarOption Icon={Add} addChannel titleText="Add Channel" />
     </SideBarContainer>
   );
 }
@@ -34,14 +38,17 @@ const SideBarContainer = styled.div`
   flex-direction: column;
   color: white;
   background-color: var(--primary-color);
+
+  > hr {
+    margin: 10px 0;
+    border: 1px solid #787a7d;
+  }
 `;
 
 const SideBarHeader = styled.div`
   display: flex;
-  border-top: solid 1px gray;
-  border-bottom: solid 1px gray;
+  border-top: solid 2px gray;
   width: 100%;
-  height: 10%;
   justify-content: space-between;
 `;
 
