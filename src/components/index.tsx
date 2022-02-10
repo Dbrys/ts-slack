@@ -1,4 +1,5 @@
 import Header from './Header';
 import SideBar from './SideBar';
+import Modal from './Modal';
 
-export { Header, SideBar };
+export { Header, SideBar, Modal };
