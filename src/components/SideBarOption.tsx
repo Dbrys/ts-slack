@@ -16,9 +16,17 @@ function SideBarOption({
   addChannel = false,
 }: SideBarOptionProps) {
   const [showAddChannelModal, setShowAddChannelModal] = useState(false);
+  const [channelInput, setChannelInput] = useState('');
 
   const handleModalClose = () => {
     setShowAddChannelModal(false);
+  };
+
+  const handleConfirm = () => {
+    if (channelInput.trim()) {
+      //TODO: Add channel to fireStore db
+    }
+    return;
   };
 
   const handleAddChannel = (e: MouseEvent<HTMLElement>) => {
@@ -37,9 +45,14 @@ function SideBarOption({
       <Modal
         isOpen={showAddChannelModal}
         header={<>Add channel name below</>}
-        body={<Input />}
+        body={
+          <Input
+            fullWidth
+            onChange={(event) => setChannelInput(event.target.value)}
+          />
+        }
         handleClose={handleModalClose}
-        handleConfirm={handleModalClose}
+        handleConfirm={handleConfirm}
         confirmText="Create Channel"
       />
     </>

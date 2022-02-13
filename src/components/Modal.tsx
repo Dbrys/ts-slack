@@ -1,4 +1,5 @@
 import { Dialog, DialogActions, Button } from '@material-ui/core';
+import styled from 'styled-components';
 
 type ModalProps = {
   header: JSX.Element;
@@ -19,14 +20,33 @@ function Modal({
 }: ModalProps) {
   return (
     <Dialog open={isOpen} onClose={handleClose} fullWidth>
-      {header}
-      {body}
-      <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleConfirm}>{confirmText}</Button>
-      </DialogActions>
+      <ModalContainer>
+        <h3>{header}</h3>
+        <ModalBody>{body}</ModalBody>
+        <DialogActions>
+          <Button color="secondary" variant="outlined" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button color="primary" variant="outlined" onClick={handleConfirm}>
+            {confirmText}
+          </Button>
+        </DialogActions>
+      </ModalContainer>
     </Dialog>
   );
 }
+
+const ModalContainer = styled.div`
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  > h3 {
+    padding-bottom: 10px;
+  }
+`;
+
+const ModalBody = styled.div`
+  padding-bottom: 12px;
+`;
 
 export default Modal;
