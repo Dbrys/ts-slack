@@ -3,6 +3,8 @@ import { Input } from '@material-ui/core';
 import styled from 'styled-components';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import Modal from './Modal';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 
 type SideBarOptionProps = {
   Icon: (props: SvgIconProps) => JSX.Element;
@@ -22,9 +24,17 @@ function SideBarOption({
     setShowAddChannelModal(false);
   };
 
-  const handleConfirm = () => {
-    if (channelInput.trim()) {
+  const handleConfirm = async () => {
+    const channel = channelInput.trim();
+    if (channel) {
       //TODO: Add channel to fireStore db
+      try {
+        await addDoc(collection(db, 'rooms'), {
+          name: channel,
+        });
+
+        setShowAddChannelModal(false);
+      } catch {}
     }
     return;
   };
