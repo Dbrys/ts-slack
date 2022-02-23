@@ -19,7 +19,12 @@ function Modal({
   confirmText = 'Confirm',
 }: ModalProps) {
   return (
-    <Dialog open={isOpen} onClose={handleClose} fullWidth>
+    <Dialog
+      open={isOpen}
+      onClose={handleClose}
+      fullWidth
+      transitionDuration={0}
+    >
       <ModalContainer>
         <h3>{header}</h3>
         <ModalBody>{body}</ModalBody>

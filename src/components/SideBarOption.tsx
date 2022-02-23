@@ -7,7 +7,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 
 type SideBarOptionProps = {
-  Icon: (props: SvgIconProps) => JSX.Element;
+  Icon?: (props: SvgIconProps) => JSX.Element;
   addChannel?: boolean;
   titleText: string;
 };
@@ -27,12 +27,10 @@ function SideBarOption({
   const handleConfirm = async () => {
     const channel = channelInput.trim();
     if (channel) {
-      //TODO: Add channel to fireStore db
       try {
         await addDoc(collection(db, 'rooms'), {
           name: channel,
         });
-
         setShowAddChannelModal(false);
       } catch {}
     }
@@ -49,7 +47,7 @@ function SideBarOption({
       <SideBarOptionContainer
         onClick={addChannel ? handleAddChannel : handleSelect}
       >
-        <Icon fontSize="small" />
+        {!!Icon ? <Icon fontSize="small" /> : '#'}
         <h4>{titleText}</h4>
       </SideBarOptionContainer>
       <Modal
