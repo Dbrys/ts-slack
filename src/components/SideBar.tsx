@@ -5,9 +5,13 @@ import {
   Add,
 } from '@material-ui/icons';
 import styled from 'styled-components';
+import { useCollection } from 'react-firebase-hooks/firestore';
 import SideBarOption from './SideBarOption';
+import { db } from '../firebase';
+import { collection } from 'firebase/firestore';
 
 function SideBar() {
+  const [channels, loading, error] = useCollection(collection(db, 'rooms'));
   return (
     <SideBarContainer>
       <SideBarHeader>
@@ -29,6 +33,10 @@ function SideBar() {
       <SideBarOption Icon={DraftsRounded} titleText="Channels" />
       <hr />
       <SideBarOption Icon={Add} addChannel titleText="Add Channel" />
+      {!!channels?.docs.length &&
+        channels.docs.map((chan) => (
+          <SideBarOption key={chan.id} titleText={chan.data().name} />
+        ))}
     </SideBarContainer>
   );
 }
