@@ -1,24 +1,29 @@
-import { MouseEvent, useState } from 'react';
+import { useState } from 'react';
 import { Input } from '@material-ui/core';
 import styled from 'styled-components';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import Modal from './Modal';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import { useDispatch } from 'react-redux';
+import { enterRoom } from '../features/appSlice';
 
 type SideBarOptionProps = {
+  id?: string;
   Icon?: (props: SvgIconProps) => JSX.Element;
   addChannel?: boolean;
   titleText: string;
 };
 
 function SideBarOption({
+  id = '',
   Icon,
   titleText,
   addChannel = false,
 }: SideBarOptionProps) {
   const [showAddChannelModal, setShowAddChannelModal] = useState(false);
   const [channelInput, setChannelInput] = useState('');
+  const dispatch = useDispatch;
 
   const handleModalClose = () => {
     setShowAddChannelModal(false);
@@ -37,11 +42,20 @@ function SideBarOption({
     return;
   };
 
-  const handleAddChannel = (e: MouseEvent<HTMLElement>) => {
+  const handleAddChannel = () => {
     setShowAddChannelModal(true);
   };
 
-  const handleSelect = (e: MouseEvent<HTMLElement>) => {};
+  const handleSelect = () => {
+    // TODO: figure out typing for payload action
+    // if (id) {
+    //   dispatch(
+    //     enterRoom({
+    //       roomId: id,
+    //     })
+    //   );
+    // }
+  };
   return (
     <>
       <SideBarOptionContainer
