@@ -18,6 +18,7 @@ function Modal({
   handleConfirm,
   confirmText = 'Confirm',
 }: ModalProps) {
+
   return (
     <Dialog
       open={isOpen}
