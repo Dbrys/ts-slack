@@ -23,7 +23,7 @@ function SideBarOption({
 }: SideBarOptionProps) {
   const [showAddChannelModal, setShowAddChannelModal] = useState(false);
   const [channelInput, setChannelInput] = useState('');
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
   const handleModalClose = () => {
     setShowAddChannelModal(false);
@@ -47,14 +47,13 @@ function SideBarOption({
   };
 
   const handleSelect = () => {
-    // TODO: figure out typing for payload action
-    // if (id) {
-    //   dispatch(
-    //     enterRoom({
-    //       roomId: id,
-    //     })
-    //   );
-    // }
+    if (id) {
+      dispatch(
+        enterRoom({
+          roomId: id,
+        })
+      );
+    }
   };
   return (
     <>
