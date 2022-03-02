@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Input } from '@material-ui/core';
+import { Tab } from '@material-ui/icons';
 import styled from 'styled-components';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import Modal from './Modal';
@@ -60,7 +61,7 @@ function SideBarOption({
       <SideBarOptionContainer
         onClick={addChannel ? handleAddChannel : handleSelect}
       >
-        {!!Icon ? <Icon fontSize="small" /> : '#'}
+        {!!Icon ? <Icon fontSize="small" /> : <Tab fontSize="small" />}
         <h4>{titleText}</h4>
       </SideBarOptionContainer>
       <Modal

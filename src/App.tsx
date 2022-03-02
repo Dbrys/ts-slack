@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Header, SideBar } from './components';
 import styled from 'styled-components';
 import { store } from '../src/store/store';
+import Chat from './components/Chat';
 import { Provider } from 'react-redux';
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
           <AppBody>
             <SideBar />
             <Routes>
-              <Route path="/"></Route>
+              <Route path="/" element={<Chat />}></Route>
             </Routes>
           </AppBody>
         </>
