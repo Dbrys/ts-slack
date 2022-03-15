@@ -2,7 +2,7 @@ import { Button } from '@material-ui/core';
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { db } from '../firebase';
-import { setDoc, doc } from 'firebase/firestore';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
 type ChatInputProps = {
   channelName: string;
@@ -10,17 +10,19 @@ type ChatInputProps = {
 };
 
 function ChatInput({ channelName, channelId }: ChatInputProps) {
-  const inputRef = useRef(null);
-  const handleSendMessage = (
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const handleSendMessage = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
 
-    if (channelId) return;
+    if (!channelId) return;
 
-    // await setDoc(doc(channelId), {
-    //   name: inputRef.current.value
-    // });
+    await addDoc(collection(db, 'rooms', channelId, 'messages'), {
+      message: inputRef.current?.value,
+      timeStamp: serverTimestamp(),
+    });
+    inputRef.current = null;
   };
   return (
     <ChatInputContainer>
