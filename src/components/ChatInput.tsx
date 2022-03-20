@@ -21,6 +21,9 @@ function ChatInput({ channelName, channelId }: ChatInputProps) {
     await addDoc(collection(db, 'rooms', channelId, 'messages'), {
       message: inputRef.current?.value,
       timeStamp: serverTimestamp(),
+      user: 'Dbrys',
+      userImage:
+        'https://static.wikia.nocookie.net/ousamaranking/images/2/2f/Bojji.png/revision/latest?cb=20210824155319',
     });
     inputRef.current = null;
   };
